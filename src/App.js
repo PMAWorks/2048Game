@@ -30,7 +30,7 @@ function App() {
   },
   {
     gamepoint: null,
-    blockNum: 32,
+    blockNum: 5,
     Col: null,
   },
   {
@@ -879,8 +879,8 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div className="GameField" id="GameField" onTouchStart={start} onTouchMove={move} onTouchEnd={end} onMouseDown={start} onMouseMove={move} onMouseUp={end}>
+    <div className="App" testid="app">
+      <div className="GameField" data-testid="GameField" id="GameField" onTouchStart={start} onTouchMove={move} onTouchEnd={end} onMouseDown={start} onMouseMove={move} onMouseUp={end}>
         {Blocks.map((Block) => (
           <GamePoint Block={Block}></GamePoint>
         ))}
@@ -912,6 +912,7 @@ var GamePoint = (props) => {
 
   var style = {
   }
+
 
   switch (props.Block.Col) {
     case 2: {
@@ -1113,7 +1114,7 @@ var GamePoint = (props) => {
 
 
   return (
-    <div className='Block' style={style}>
+    <div className='Block' data-testid={`GamePoint${props.Block.blockNum}`} style={style}>
       {props.Block.Col}
     </div>
   );
